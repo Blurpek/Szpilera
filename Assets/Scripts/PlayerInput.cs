@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.Events;
 
+[System.Serializable] public class _UnityEventTransform : UnityEvent<Vector2> { }
 [RequireComponent (typeof (Player))]
-public class PlayerInput : MonoBehaviour {
+public class PlayerInput : MonoBehaviour
+{
+	public _UnityEventTransform createPortalEvent = new _UnityEventTransform();
+
 
 	Player player;
 	Animator animator;
@@ -47,6 +52,16 @@ public class PlayerInput : MonoBehaviour {
 			else
 				Debug.Log("nie szczela ;/");
 		}
+		if (Input.GetButtonDown("CreatePortalButton")) {
+			if (createPortalEvent != null)
+			{
+				createPortalEvent.Invoke(calculatePortalPosition());
+			}
+		}
+	}
+
+	private Vector2 calculatePortalPosition() {
+		return (Vector2) this.transform.position + new Vector2(spriteRenderer.bounds.size.x * (facingRight ? 1 : -1)  / 2, 0);
 	}
 
 	private void rotateToMouse(Vector3 mousePosition)
