@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - background
+  - portal
+  - weapon
   layers:
   - Default
   - TransparentFX
@@ -15,9 +17,9 @@ TagManager:
   - 
   - 
   - background
+  - Portal
   - Player
-  - 
-  - 
+  - Weapon
   - 
   - 
   - 
@@ -41,4 +43,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Portal
+    uniqueID: 3285762223
+    locked: 0
+  - name: Player
+    uniqueID: 2510743315
+    locked: 0
+  - name: Weapon
+    uniqueID: 2482785997
+    locked: 0
+  - name: Line
+    uniqueID: 938034747
     locked: 0
