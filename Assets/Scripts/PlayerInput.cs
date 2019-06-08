@@ -2,10 +2,11 @@
 using System.Collections;
 using System;
 using UnityEngine.Events;
+using UnityEngine.Networking;
 
 [System.Serializable] public class _UnityEventTransform : UnityEvent<Vector2> { }
 [RequireComponent (typeof (Player))]
-public class PlayerInput : MonoBehaviour
+public class PlayerInput : NetworkBehaviour
 {
 	public _UnityEventTransform createPortalEvent = new _UnityEventTransform();
 
@@ -31,6 +32,12 @@ public class PlayerInput : MonoBehaviour
 	}
 
 	void FixedUpdate () {
+
+
+        if (!isLocalPlayer) {
+            return;
+        }
+
 		Vector3 mousePosition = Input.mousePosition;
 		Vector2 directionalInput = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
 		animator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")));
