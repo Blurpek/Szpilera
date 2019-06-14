@@ -17,6 +17,7 @@ public class Weapon : MonoBehaviour
 		lineRenderer.enabled = false;
     }
 	
+
 	public IEnumerator Shoot()
 	{
 		//prefab way
